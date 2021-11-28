@@ -1,0 +1,29 @@
+@startuml View
+start
+group Activity
+:setContentView();
+end group
+
+group PhoneWindow
+:installDecor();
+
+group installDecor
+:generateDecor();
+:generateLayout();
+note right
+    [1] 根据 xml 中的配置
+    调用 requestFeature() 进行配置
+    选取对应的 layoutResource，并 inflate 出对应的 layout
+end note
+note
+这一步结束之后，
+会获取到布局中的 contentLayout
+然后将 setContentView() 
+传入的 resourceId inflate 
+到 contentLayout 当中。
+end note
+end group
+
+
+end
+@enduml
